@@ -1,4 +1,4 @@
-import { getPiece, squareElements } from "../board/board.js";
+import { getPiece, squareElements } from "../engine/board.js";
 
 
 export function onSquareClicked(board){

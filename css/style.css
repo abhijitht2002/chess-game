@@ -1,73 +1,70 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.game-container{
-    
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }
 
-#chessboard-wrapper{
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto 1fr;
-    gap: 10px;
+#chessboard-wrapper {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
+  gap: 10px;
 }
 
-#chessboard{
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    width: 80vmin;
-    height: 80vmin;
-    /* position: relative; */
-    /* border: 2px solid black; */
-    /* margin: 0 auto; */
+#board {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  width: 80vmin;
+  height: 80vmin;
+  /* position: relative; */
+  /* border: 2px solid black; */
+  /* margin: 0 auto; */
 }
 
-.square{
-    width: 100%;
-    height: 100%;
+.square {
+  width: 100%;
+  height: 100%;
 
-    /* border: 2px solid black; */
+  /* border: 2px solid black; */
 }
 
-.square.light{
-    background-color: #f0d9b5;
+.square.light {
+  background-color: #f0d9b5;
 }
 
-.square.dark{
-    background-color: #b58863;
+.square.dark {
+  background-color: #b58863;
 }
 
-#ranks{
-    display: grid;
-    grid-template-rows: repeat(8, 1fr);
-    text-align: center;
+#ranks {
+  display: grid;
+  grid-template-rows: repeat(8, 1fr);
+  text-align: center;
 }
 
-#ranks div{
-    display: grid;
-    place-items: center;
+#ranks div {
+  display: grid;
+  place-items: center;
 }
 
-#files{
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    text-align: center;
-
+#files {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  text-align: center;
 }
 
-.piece{
-    width: 100%;
-    height: 100%;
+img {
+  width: 100%;
+  height: 100%;
 
-    object-fit: contain;
+  object-fit: contain;
 }
