@@ -1,7 +1,7 @@
-import { generateBoard, initializePieces } from "./engine/board.js";
+import { board, initializePieces } from "./engine/state.js";
+import { handleClick } from "./ui/events.js";
 import { renderBoard } from "./ui/render.js";
 
+initializePieces(board);
 
-const board = generateBoard()
-initializePieces(board)
-renderBoard(board)
+renderBoard(board, handleClick);

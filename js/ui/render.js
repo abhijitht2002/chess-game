@@ -1,6 +1,6 @@
 const boardEl = document.getElementById("board");
 
-export const renderBoard = (board) => {
+export const renderBoard = (board, onSquareClick) => {
   for (let row = 0; row < 8; row++) {
     for (let col = 0; col < 8; col++) {
       // Square element for each position on the board
@@ -10,14 +10,16 @@ export const renderBoard = (board) => {
       const isDark = (row + col) % 2 === 1;
       squareEl.classList.add(isDark ? "dark" : "light");
 
+      squareEl.addEventListener("click", () => onSquareClick(row, col));
+
       const piece = board[row][col];
       if (piece) {
         const img = document.createElement("img");
         img.src = `assets/${piece.color}_${piece.type}.png`;
-        squareEl.appendChild(img)
+        squareEl.appendChild(img);
       }
 
-      boardEl.appendChild(squareEl)
+      boardEl.appendChild(squareEl);
     }
   }
 };
