@@ -24,4 +24,7 @@ export function initializePieces(board) {
     board[1][i] = Piece("PAWN", "BLACK");
     board[6][i] = Piece("PAWN", "WHITE");
   }
+
+  board[5][5] = Piece("PAWN", "BLACK");
+  board[4][0] = Piece("PAWN", "WHITE");
 }
