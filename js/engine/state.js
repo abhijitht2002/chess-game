@@ -24,7 +24,28 @@ export function initializePieces(board) {
     board[1][i] = Piece("PAWN", "BLACK");
     board[6][i] = Piece("PAWN", "WHITE");
   }
+}
 
-  board[5][5] = Piece("PAWN", "BLACK");
-  board[4][0] = Piece("PAWN", "WHITE");
+export function testBoard(board) {
+  for (let r = 0; r < 8; r++) for (let c = 0; c < 8; c++) board[r][c] = null;
+
+  // White king at c1
+  board[7][2] = Piece("KING", "WHITE");
+
+  // White pawn at d2 (6,3)
+  board[5][0] = Piece("PAWN", "WHITE");
+
+  // Black bishop at a4 (4,0) attacking diagonal
+  board[4][5] = Piece("ROOK", "BLACK");
+
+  // board[3][2] = Piece("QUEEN", "BLACK");
+  board[5][1] = Piece("PAWN", "BLACK");
+  board[5][3] = Piece("PAWN", "WHITE");
+
+  // Other pawns for distraction
+  board[6][2] = Piece("PAWN", "WHITE");
+  board[6][4] = Piece("PAWN", "WHITE");
+
+  board[2][3] = Piece("KNIGHT", "WHITE");
+  board[2][2] = Piece("KNIGHT", "WHITE");
 }

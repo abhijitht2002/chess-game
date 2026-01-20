@@ -1,4 +1,4 @@
-import { getPseudoMoves } from "../engine/moveGen/pseudo.js";
+import { getLegalMoves } from "../engine/moveGen/legal.js";
 import { board } from "../engine/state.js";
 
 let selected = null;
@@ -14,8 +14,8 @@ export const handleClick = (row, col) => {
   //   return;
   // }
 
-  const pseudoMoves = getPseudoMoves(board, row, col);
-  console.log("pseudoMoves: ", pseudoMoves);
+  const legalMoves = getLegalMoves(board, row, col);
+  console.log("legalMoves: ", legalMoves);
 
   // selected = null;
 };
