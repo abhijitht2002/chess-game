@@ -46,6 +46,25 @@
   background-color: #b58863;
 }
 
+.square.selected {
+  background-color: rgba(255, 215, 0, 0.6);
+}
+
+.square.highlight {
+  position: relative;
+}
+.square.highlight::after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background-color: rgba(0, 180, 0, 0.6);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 #ranks {
   display: grid;
   grid-template-rows: repeat(8, 1fr);

@@ -26,6 +26,27 @@ export function initializePieces(board) {
   }
 }
 
+export let highlights = [];
+export let selected = null;
+export let enemy = [];
+
+export const setHighlights = (moves) => {
+  highlights = moves;
+};
+
+export const setSelected = (r, c) => {
+  selected = { row: r, col: c };
+};
+
+export const setEnemy = (pos) => {
+  enemy = pos;
+};
+
+export const clearUI = () => {
+  highlights = [];
+  selected = null;
+};
+
 export function testBoard(board) {
   for (let r = 0; r < 8; r++) for (let c = 0; c < 8; c++) board[r][c] = null;
 
@@ -43,8 +64,8 @@ export function testBoard(board) {
   board[5][3] = Piece("PAWN", "WHITE");
 
   // Other pawns for distraction
-  board[6][2] = Piece("PAWN", "WHITE");
-  board[6][4] = Piece("PAWN", "WHITE");
+  board[6][2] = Piece("BISHOP", "WHITE");
+  board[6][4] = Piece("BISHOP", "WHITE");
 
   board[2][3] = Piece("KNIGHT", "WHITE");
   board[2][2] = Piece("KNIGHT", "WHITE");

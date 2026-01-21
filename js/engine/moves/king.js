@@ -1,4 +1,4 @@
-import { isEmpty, isEnemy, isInBounds } from "../utils";
+import { isEmpty, isEnemy, isInBounds } from "../utils/index.js";
 
 export const kingMoves = (board, r, c) => {
   const piece = board[r][c];
@@ -17,8 +17,8 @@ export const kingMoves = (board, r, c) => {
   ];
 
   for (const [dr, dc] of directions) {
-    moveR = r + dr;
-    moveC = c + dc;
+    const moveR = r + dr;
+    const moveC = c + dc;
 
     if (
       isInBounds(moveR, moveC) &&

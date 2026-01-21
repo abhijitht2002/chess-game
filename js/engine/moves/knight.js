@@ -1,7 +1,7 @@
-import { isEmpty, isEnemy, isInBounds } from "../utils";
+import { isEmpty, isEnemy, isInBounds } from "../utils/index.js";
 
 export const knightMoves = (board, r, c) => {
-  piece = board[r][c];
+  const piece = board[r][c];
   if (!piece) return [];
 
   let moves = [];
