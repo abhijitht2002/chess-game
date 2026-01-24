@@ -1,8 +1,8 @@
-import { board, initializePieces, testBoard } from "./engine/state.js";
+import { initializePieces, state, testBoard } from "./engine/state.js";
 import { handleClick } from "./ui/events.js";
 import { renderBoard } from "./ui/render.js";
 
-// initializePieces(board);
-testBoard(board);
+initializePieces(state.board);
+// testBoard(state.board);
 
-renderBoard(board, handleClick);
+renderBoard(state.board, handleClick);

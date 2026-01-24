@@ -1,4 +1,4 @@
-import { highlights, selected } from "../engine/state.js";
+import { state } from "../engine/state.js";
 
 const boardEl = document.getElementById("board");
 
@@ -21,11 +21,11 @@ export const renderBoard = (board, onSquareClick) => {
         squareEl.appendChild(img);
       }
 
-      if (highlights?.some(([r, c]) => r === row && c === col)) {
+      if (state.highlights?.some(([r, c]) => r === row && c === col)) {
         squareEl.classList.add("highlight");
       }
 
-      if (selected?.row === row && selected?.col === col) {
+      if (state.selected?.row === row && state.selected?.col === col) {
         squareEl.classList.add("selected");
       }
 

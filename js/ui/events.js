@@ -1,5 +1,5 @@
 import { getLegalMoves } from "../engine/moveGen/legal.js";
-import { board, clearUI, setHighlights, setSelected } from "../engine/state.js";
+import { clearUI, setHighlights, setSelected, state } from "../engine/state.js";
 import { renderBoard } from "./render.js";
 
 let selected = null;
@@ -7,7 +7,7 @@ let selected = null;
 export const handleClick = (row, col) => {
   console.log("clicked: ", row, col);
 
-  const piece = board[row][col];
+  const piece = state.board[row][col];
   console.log(piece);
 
   // if (!selected) {
@@ -17,15 +17,15 @@ export const handleClick = (row, col) => {
   // selected = null;
 
   if (piece) {
-    const legalMoves = getLegalMoves(board, row, col);
+    const legalMoves = getLegalMoves(state.board, row, col);
     console.log("legalMoves: ", legalMoves);
 
     setHighlights(legalMoves);
     setSelected(row, col);
 
-    renderBoard(board, handleClick);
+    renderBoard(state.board, handleClick);
   } else {
     clearUI();
-    renderBoard(board, handleClick);
+    renderBoard(state.board, handleClick);
   }
 };

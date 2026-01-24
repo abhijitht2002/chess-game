@@ -1,7 +1,14 @@
 import { generateBoard } from "./board.js";
 import { Piece } from "./piece.js";
 
-export const board = generateBoard();
+export const state = {
+  board: generateBoard(),
+  highlights: [],
+  selected: null,
+  phase: "idle",
+  turn: "WHITE",
+  mode: "test", //  AI | multiplayer
+};
 
 export function initializePieces(board) {
   const back = [
@@ -26,16 +33,12 @@ export function initializePieces(board) {
   }
 }
 
-export let highlights = [];
-export let selected = null;
-export let enemy = [];
-
 export const setHighlights = (moves) => {
-  highlights = moves;
+  state.highlights = moves;
 };
 
 export const setSelected = (r, c) => {
-  selected = { row: r, col: c };
+  state.selected = { row: r, col: c };
 };
 
 export const setEnemy = (pos) => {
@@ -43,8 +46,8 @@ export const setEnemy = (pos) => {
 };
 
 export const clearUI = () => {
-  highlights = [];
-  selected = null;
+  state.highlights = [];
+  state.selected = null;
 };
 
 export function testBoard(board) {
