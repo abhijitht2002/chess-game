@@ -5,7 +5,7 @@ export const state = {
   board: generateBoard(),
   highlights: [],
   selected: null,
-  phase: "idle",
+  phase: "select", // select | move | wait
   turn: "WHITE",
   mode: "test", //  AI | multiplayer
 };
