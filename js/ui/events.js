@@ -1,3 +1,4 @@
+import { movePiece } from "../engine/board.js";
 import { getLegalMoves } from "../engine/moveGen/legal.js";
 import { clearUI, setHighlights, setSelected, state } from "../engine/state.js";
 import { renderBoard } from "./render.js";
@@ -19,6 +20,7 @@ export const handleClick = (row, col) => {
     console.log("legalMoves: ", legalMoves);
 
     setSelected(row, col);
+    console.log("selected:", state.selected);
     setHighlights(legalMoves);
 
     state.phase = "move";
@@ -42,9 +44,25 @@ export const handleClick = (row, col) => {
       return;
     }
 
+    // enemy or legal
+    const isLegal = state.highlights.some(([r, c]) => r === row && c === col);
+
+    if (isLegal) {
+      movePiece(state.board, state.selected.row, state.selected.col, row, col);
+      clearUI();
+      switchTurn();
+      state.phase = "select";
+      renderBoard(state.board, handleClick);
+      return;
+    }
+
     //  invalid click
     clearUI();
     state.phase = "select";
     renderBoard(state.board, handleClick);
   }
 };
+
+export function switchTurn() {
+  state.turn = state.turn === "WHITE" ? "BLACK" : "WHITE";
+}

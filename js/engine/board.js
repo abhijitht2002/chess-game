@@ -11,6 +11,13 @@ export const setPiece = (board, row, col, piece) => {
   board[row][col] = piece;
 };
 
-export const movePiece = (board, from, to) => {
+export const movePiece = (board, fromRow, fromCol, toRow, toCol) => {
   // movement logic here
+  const piece = board[fromRow][fromCol];
+  if (!piece) return board;
+
+  board[toRow][toCol] = piece;
+  board[fromRow][fromCol] = null;
+
+  return board;
 };

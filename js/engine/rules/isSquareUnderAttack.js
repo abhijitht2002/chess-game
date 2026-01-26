@@ -2,7 +2,7 @@ import { isInBounds } from "../utils/index.js";
 
 export const isSquareUnderAttack = (board, r, c, enemyColor) => {
   // 1. pawn
-  const pDir = enemyColor === "WHITE" ? -1 : 1;
+  const pDir = enemyColor === "WHITE" ? 1 : -1;
   const pAttacks = [
     [r + pDir, c - 1],
     [r + pDir, c + 1],
