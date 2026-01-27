@@ -65,6 +65,10 @@
   transform: translate(-50%, -50%);
 }
 
+.square.check {
+  background: #ff4d4d;
+}
+
 #ranks {
   display: grid;
   grid-template-rows: repeat(8, 1fr);

@@ -17,3 +17,14 @@ export const simulateMove = (board, fromRow, fromCol, toRow, toCol) => {
 
   return cloneBoard;
 };
+
+export const findKing = (board, color) => {
+  for (let r = 0; r < 8; r++) {
+    for (let c = 0; c < 8; c++) {
+      const p = board[r][c];
+      if (p && p.type === "KING" && p.color === color) {
+        return [r, c];
+      }
+    }
+  }
+};

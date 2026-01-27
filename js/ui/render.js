@@ -1,9 +1,18 @@
+import { isInCheck } from "../engine/rules/isInCheck.js";
 import { state } from "../engine/state.js";
+import { findKing } from "../engine/utils/index.js";
 
 const boardEl = document.getElementById("board");
 
 export const renderBoard = (board, onSquareClick) => {
   boardEl.innerHTML = "";
+
+  const checkInfo = {};
+  for (const color of ["WHITE", "BLACK"]) {
+    if (isInCheck(board, color)) {
+      checkInfo[color] = findKing(board, color);
+    }
+  }
 
   for (let row = 0; row < 8; row++) {
     for (let col = 0; col < 8; col++) {
@@ -27,6 +36,16 @@ export const renderBoard = (board, onSquareClick) => {
 
       if (state.selected?.row === row && state.selected?.col === col) {
         squareEl.classList.add("selected");
+      }
+
+      // check highlight
+      if (
+        piece?.type === "KING" &&
+        checkInfo[piece.color] &&
+        checkInfo[piece.color][0] === row &&
+        checkInfo[piece.color][1] === col
+      ) {
+        squareEl.classList.add("check");
       }
 
       squareEl.addEventListener("click", () => onSquareClick(row, col));
