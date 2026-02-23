@@ -11,6 +11,41 @@
       <div id="board"></div>
     </div>
 
+    <div id="mode-modal" class="modal hidden">
+      <div class="modal-card">
+        <h2>Game Mode</h2>
+
+        <div class="mode-toggle">
+          <input type="radio" name="mode" id="single" checked />
+          <input type="radio" name="mode" id="multi" />
+
+          <label for="single" class="option">Single Player</label>
+          <label for="multi" class="option">Multiplayer</label>
+
+          <span class="highlight"></span>
+        </div>
+
+        <div id="single-options" class="options">
+          <h3>Select Your Color</h3>
+
+          <div class="color-options">
+            <button data-color="WHITE" class="color-btn">White</button>
+            <button data-color="BLACK" class="color-btn">Black</button>
+            <button data-color="RANDOM" class="color-btn active">Random</button>
+          </div>
+        </div>
+
+        <div id="multi-options" class="options hidden">
+          <h3>Multiplayer</h3>
+          <div class="status-preview">
+            <p style="opacity: 0.6">Multiplayer is under development</p>
+          </div>
+        </div>
+
+        <button id="start-game-btn" class="start-btn">Start Game</button>
+      </div>
+    </div>
+
     <script type="module" src="./js/main.js"></script>
   </body>
 </html>
