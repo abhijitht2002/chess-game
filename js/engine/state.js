@@ -4,13 +4,14 @@ import { Piece } from "./piece.js";
 export const state = {
   board: generateBoard(),
   appPhase: "modeSelect", // splash | modeSelect | playing | gameOver | paused
-  player: {},
+  player: {
+    color: null
+  },
   highlights: [],
   selected: null,
   phase: "select", // select | move | wait
   turn: "WHITE",
   mode: "test", //  AI | multiplayer
-
 };
 
 export function initializePieces(board) {

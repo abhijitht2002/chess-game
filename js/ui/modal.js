@@ -21,11 +21,15 @@ export const hideModal = (id) => {
 }
 
 export const getSelectedMode = () => {
-    return document.querySelector('input[name="mode"]:checked').id;
+    const selectedMode = document.querySelector('input[name="mode"]:checked').id;
+    return selectedMode === "single" ? "AI" : "multiplayer"
 }
 
 export const getSelectedColor = () => {
-    
+    if (selectedColor === "RANDOM") {
+        return Math.random() < 0.5 ? "WHITE" : "BLACK"
+    }
+    return selectedColor
 }
 
 function updateModeUI() {
@@ -50,12 +54,17 @@ colorBtns.forEach((btn) => {
 
 
 startBtn.addEventListener("click", () => {
+    const mode = getSelectedMode();
+    const color = getSelectedColor();
 
     state.appPhase = "playing"
-    console.log(state);
-    console.log(getSelectedMode());
-    renderApp()
+    state.mode = mode
+    state.player.color = color
 
+    console.log(selectedColor);
+    console.log(`mode: ${mode}, color: ${color}`);
+    console.log(state);
+    renderApp()
 })
 
 singleRadio.addEventListener("change", updateModeUI);

@@ -5,7 +5,7 @@ import { renderBoard } from "./render.js";
 
 export const renderApp = () => {
     renderBoard(state.board, handleClick);
-    
+
     switch (state.appPhase) {
         case "modeSelect":
             showModal("mode-modal");
@@ -13,7 +13,6 @@ export const renderApp = () => {
 
         case "playing":
             hideModal("mode-modal")
-
             break;
 
         case "gameOver":

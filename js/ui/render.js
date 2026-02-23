@@ -14,8 +14,13 @@ export const renderBoard = (board, onSquareClick) => {
     }
   }
 
-  for (let row = 0; row < 8; row++) {
-    for (let col = 0; col < 8; col++) {
+  const isBlackPerspective = state.player.color === "BLACK"
+
+  const rowRange = isBlackPerspective ? [...Array(8).keys()].reverse() : [...Array(8).keys()]
+  const colRange = isBlackPerspective ? [...Array(8).keys()].reverse() : [...Array(8).keys()]
+
+  for (const row of rowRange) {
+    for (const col of colRange) {
       // Square element for each position on the board
       const squareEl = document.createElement("div");
       squareEl.classList.add("square");
