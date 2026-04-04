@@ -1,10 +1,16 @@
 import { movePiece } from "../engine/board.js";
 import { getLegalMoves } from "../engine/moveGen/legal.js";
+import { isCheckmate, isStalemate } from "../engine/rules/gameStatus.js";
 import { clearUI, setHighlights, setSelected, state } from "../engine/state.js";
 import { renderBoard } from "./render.js";
+import { renderApp } from "./renderApp.js";
 
 export const handleClick = (row, col) => {
   console.log("clicked: ", row, col);
+
+  if (state.appPhase !== "playing") {
+    return
+  }
 
   const piece = state.board[row][col];
   console.log(piece);
@@ -25,7 +31,7 @@ export const handleClick = (row, col) => {
 
     state.phase = "move";
 
-    renderBoard(state.board, handleClick);
+    renderApp()
     return;
   }
 
@@ -40,7 +46,7 @@ export const handleClick = (row, col) => {
       setSelected(row, col);
       setHighlights(legalMoves);
 
-      renderBoard(state.board, handleClick);
+      renderApp()
       return;
     }
 
@@ -51,15 +57,26 @@ export const handleClick = (row, col) => {
       movePiece(state.board, state.selected.row, state.selected.col, row, col);
       clearUI();
       switchTurn();
+
+      if (isCheckmate(state.board, state.turn)) {
+        state.appPhase = "gameOver";
+        state.status = "Checkmate"
+        state.winner = state.turn === "WHITE" ? "Black" : "White"
+      } else if (isStalemate(state.board, state.turn)) {
+        state.appPhase = "gameOver";
+        state.status = "Stalemate"
+        state.winner = null
+      }
+
       state.phase = "select";
-      renderBoard(state.board, handleClick);
+      renderApp()
       return;
     }
 
     //  invalid click
     clearUI();
     state.phase = "select";
-    renderBoard(state.board, handleClick);
+    renderApp()
   }
 };
 
