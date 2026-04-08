@@ -3,9 +3,13 @@ import { state } from "../engine/state.js";
 import { findKing } from "../engine/utils/index.js";
 
 const boardEl = document.getElementById("board");
+const ranks = document.getElementById("ranks")
+const files = document.getElementById("files")
 
 export const renderBoard = (board, onSquareClick) => {
   boardEl.innerHTML = "";
+  ranks.innerHTML = "";
+  files.innerHTML = "";
 
   const checkInfo = {};
   for (const color of ["WHITE", "BLACK"]) {
@@ -18,6 +22,18 @@ export const renderBoard = (board, onSquareClick) => {
 
   const rowRange = isBlackPerspective ? [...Array(8).keys()].reverse() : [...Array(8).keys()]
   const colRange = isBlackPerspective ? [...Array(8).keys()].reverse() : [...Array(8).keys()]
+
+  for (const row of rowRange) {
+    const rank = document.createElement("div")
+    rank.innerHTML = row + 1
+    ranks.appendChild(rank)
+  }
+
+  for (const col of colRange) {
+    const file = document.createElement("div")
+    file.innerHTML = String.fromCharCode(64 + col + 1).toLowerCase()
+    files.appendChild(file)
+  }
 
   for (const row of rowRange) {
     for (const col of colRange) {
