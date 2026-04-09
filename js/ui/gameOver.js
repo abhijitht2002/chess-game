@@ -32,6 +32,9 @@ export function removeGameOver() {
     state.board = generateBoard()
     initializePieces(state.board)
     state.appPhase = "splash"
+    state.player["WHITE"] = null
+    state.player["BLACK"] = null
+    state.mode = "test"
     state.status = null
     state.winner = null
     // state.highlights = []

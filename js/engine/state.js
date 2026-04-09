@@ -5,7 +5,8 @@ export const state = {
   board: generateBoard(),
   appPhase: "splash", // splash | modeSelect | playing | gameOver | paused
   player: {
-    color: null
+    WHITE: null,
+    BLACK: null
   },
   highlights: [],
   selected: null,

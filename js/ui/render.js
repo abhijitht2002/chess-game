@@ -18,20 +18,23 @@ export const renderBoard = (board, onSquareClick) => {
     }
   }
 
-  const isBlackPerspective = state.player.color === "BLACK"
+  const isBlackPerspective = state.player["BLACK"] === "human"
 
   const rowRange = isBlackPerspective ? [...Array(8).keys()].reverse() : [...Array(8).keys()]
   const colRange = isBlackPerspective ? [...Array(8).keys()].reverse() : [...Array(8).keys()]
 
-  for (const row of rowRange) {
+  const rankRange = isBlackPerspective ? [...Array(8).keys()].map(i => i + 1) : [...Array(8).keys()].map(i => 8 - i)
+  const fileRange = isBlackPerspective ? ["h", "g", "f", "e", "d", "c", "b", "a"] : ["a", "b", "c", "d", "e", "f", "g", "h"]
+
+  for (const r of rankRange) {
     const rank = document.createElement("div")
-    rank.innerHTML = row + 1
+    rank.innerHTML = r
     ranks.appendChild(rank)
   }
 
-  for (const col of colRange) {
+  for (const f of fileRange) {
     const file = document.createElement("div")
-    file.innerHTML = String.fromCharCode(64 + col + 1).toLowerCase()
+    file.innerHTML = f
     files.appendChild(file)
   }
 

@@ -35,7 +35,9 @@ startBtn.addEventListener("click", () => {
 
     state.appPhase = "playing"
     // state.mode = mode
-    state.player.color = color
+    state.mode = "AI"
+    state.player[color] = "human"
+    state.player[color === "WHITE" ? "BLACK" : "WHITE"] = "bot"
 
     console.log(selectedColor);
     console.log(`color: ${color}`);
