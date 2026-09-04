@@ -7,17 +7,17 @@ The goal is to keep the code:
 - Clear and consistent
 - Easy to understand and maintain
 - Friendly to beginners and experienced developers
-- Easy for AI agents to understand
+- Easy for AI agents to parse, understand, and generate
 
 ---
 
-# 1. Commenting
+## 1. Commenting
 
-## 1.1 TypeScript File Headers
+### 1.1 TypeScript File Headers
 
-Every `.ts` file should begin with a short header comment describing the file's responsibility.
+Every TypeScript source file (`.ts`, `.tsx`, excluding `*.test.ts`, `*.spec.ts`, and `.d.ts`) must begin with a standardized header comment placed before all imports or other code.
 
-### Standard Format
+#### Standard Format
 
 ```ts
 /**
@@ -25,28 +25,33 @@ Every `.ts` file should begin with a short header comment describing the file's 
  * Briefly explains what this file is responsible for.
  *
  * Related:
- * - related-file.ts
- * - another-file.ts
+ * - ./related-file.ts
+ * - ../path/to/another-file.ts
  */
 ```
 
-#### Purpose
+#### Fields
 
-1. `Purpose` is required.
-2. It should answer:
-   > What is this file responsible for?
+##### `Purpose` (Required)
 
-Good:
+- **What it answers:** What is this file responsible for?
+- **Requirements:**
+  - Must state the responsibility, not the implementation details.
+  - Must be concise (1–3 sentences).
+  - Do not repeat the filename.
+  - Keep the description accurate whenever the file is modified.
+
+**Good:**
 
 ```ts
 /**
  * Purpose:
  * Represents the current state of a chess game.
- * Stores the board, players, and current turn.
+ * Stores the board layout, players, and current turn status.
  */
 ```
 
-Avoid:
+**Avoid:**
 
 ```ts
 /**
@@ -57,44 +62,41 @@ Avoid:
  */
 ```
 
-#### Related
+##### `Related` (Optional)
 
-- `Related` is optional.
-- Include it when important direct relationships with other files help explain the file's role.
-- Do not list every file that depends on or indirectly interacts with the file.
-- Omit `Related` when there are no meaningful relationships.
+- Include when direct, high-context relationships with other files help clarify this file's responsibility.
+- Use relative file paths (e.g., `./board.ts` or `../types/game.ts`) rather than bare names to prevent ambiguity across directories.
+- Do not list every file that imports or indirectly interacts with this file.
+- Omit the `Related:` block entirely when there are no meaningful direct relationships.
 
-Example:
+**Example:**
 
 ```ts
 /**
  * Related:
- * - board.ts
- * - move.ts
- * - game-state.ts
+ * - ./board.ts
+ * - ./move-validator.ts
+ * - ../types/game-state.ts
  */
 ```
 
 ### Header Rules
 
-- The header must appear before imports or other code.
-- Keep it short; it is an introduction, not full documentation.
-- Use simple, direct language.
-- Describe what the file is responsible for, not how it works.
-- Do not repeat the filename.
-- Keep the description accurate as the file changes.
-- Do not put TODOs, temporary notes, or personal reminders in the header.
-- Simple files should use a minimal header.
+1. **Placement:** The header must be the first block in the file, placed before any imports, types, or code.
+2. **Scope:** Keep it short; it is a high-level introduction, not full API documentation.
+3. **Language:** Use simple, direct, declarative language.
+4. **Content Focus:** Describe _what_ the file is responsible for, never _how_ it works internally.
+5. **No Noise:** Do not include author tags, creation dates, TODOs, temporary notes, or changelogs.
+6. **Minimal for Simple Files:** Single-purpose utility files should use a minimal 1-sentence `Purpose` header.
 
-### Checklist
+### Checklist for Agents and Developers
 
-When creating or modifying a .ts file:
+Before committing or generating code in a `.ts` or `.tsx` file:
 
-- [ ] Does the file begin with a header?
-- [ ] Is `Purpose` present and clear?
-- [ ] Is the language simple and direct?
-- [ ] Is `Related` included when useful?
-- [ ] Does the header describe responsibility rather than implementation?
-- [ ] Is the header still accurate after the change?
+- [ ] Placement: Is the JSDoc header placed before all imports, types, or code?
+- [ ] Purpose: Is `Purpose:` present, concise (1–3 sentences), and focused on responsibility rather than implementation?
+- [ ] Related: Are relative paths used if `Related:` is included, or omitted entirely if not needed?
+- [ ] Cleanliness: Are author names, timestamps, TODOs, and changelogs excluded?
+- [ ] Accuracy: Does the header reflect the current state of the file after the latest change?
 
-> Core rule: The header explains what the file is responsible for. The code explains how it works.
+> **Core Rule:** The header explains what the file is responsible for. The code explains how it works.
