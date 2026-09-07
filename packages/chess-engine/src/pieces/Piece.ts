@@ -1,6 +1,6 @@
 // Piece.ts
 
-import type { Position } from "../types/position.ts";
+import type { Position } from "../board/Position.js";
 
 export type Color = "white" | "black";
 
