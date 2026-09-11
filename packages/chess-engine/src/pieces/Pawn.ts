@@ -12,14 +12,14 @@ import { Piece } from "./Piece.js";
 
 export class Pawn extends Piece {
   getMoveCandidates(): Position[] {
-    const dir = this.color === "white" ? -1 : 1;
+    const direction = this.color === "white" ? -1 : 1;
 
     const moves: Position[] = [];
 
     // one square forward
     moves.push({
       file: this.position.file,
-      rank: this.position.rank + dir,
+      rank: this.position.rank + direction,
     });
 
     // Two squares from the starting rank
@@ -27,19 +27,19 @@ export class Pawn extends Piece {
     if (this.position.rank === startRank) {
       moves.push({
         file: this.position.file,
-        rank: this.position.rank + 2 * dir,
+        rank: this.position.rank + 2 * direction,
       });
     }
 
     // Diagonal captures
     moves.push({
       file: this.position.file + 1,
-      rank: this.position.rank + dir,
+      rank: this.position.rank + direction,
     });
 
     moves.push({
       file: this.position.file - 1,
-      rank: this.position.rank + dir,
+      rank: this.position.rank + direction,
     });
 
     return moves;
