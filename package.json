@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "description": "Chess game monorepo",
-  "scripts": {},
+  "scripts": {
+    "check": "biome check .",
+    "check:fix": "biome check --write ."
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -17,6 +20,7 @@
   "packageManager": "pnpm@11.25.0",
   "type": "module",
   "devDependencies": {
+    "@biomejs/biome": "2.5.13",
     "typescript": "^7.0.2"
   }
 }
