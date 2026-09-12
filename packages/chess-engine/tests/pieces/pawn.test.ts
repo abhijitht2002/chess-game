@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { Pawn } from "../src/pieces/Pawn";
+import { Pawn } from "../../src/pieces/Pawn";
 
 describe("Pawn", () => {
   const pawn = new Pawn("white", {

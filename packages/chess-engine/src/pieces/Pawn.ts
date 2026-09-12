@@ -7,8 +7,8 @@
  * - ./Piece.js
  * - ../board/Position.js
  */
-import type { Position } from "../board/Position.js";
 import { Piece } from "./Piece.js";
+import type { Position } from "../board/Position.js";
 
 export class Pawn extends Piece {
   getMoveCandidates(): Position[] {
