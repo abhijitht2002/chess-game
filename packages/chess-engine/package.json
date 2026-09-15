@@ -12,6 +12,7 @@
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
     "vitest": "^5.0.0"
   }
 }
