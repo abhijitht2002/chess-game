@@ -11,7 +11,5 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force"
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
