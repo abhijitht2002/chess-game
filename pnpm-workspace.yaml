@@ -1,3 +1,6 @@
 packages:
+  # Applications
+  - "apps/*"
+
   # All shared libraries in the packages/ directory (e.g., packages/chess-engine, packages/shared)
   - "packages/*"
