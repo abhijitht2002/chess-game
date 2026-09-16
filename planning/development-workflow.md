@@ -57,6 +57,9 @@ Commit messages provide a short, structured summary explaining what changes were
 | 🐛    | `fix`      | Fix           | Corrects a bug or incorrect behavior.                                   |
 | ♻️    | `refactor` | Refactor      | Restructures existing code without intentionally changing its behavior. |
 | 📝    | `docs`     | Documentation | Adds, removes, or updates documentation.                                |
+| 🧹    | `chore`    | Chore         | Handles maintenance tasks that do not directly affect functionality.    |
+| 🧪    | `test`     | Testing       | Adds or updates tests to verify existing or new functionality.          |
+
 
 ### Commit Description Rules
 
