@@ -1,6 +1,16 @@
-import type { Position } from "./Position.js";
+/**
+ * Purpose:
+ * Represents the chess board grid and its state.
+ * Handles getting and setting pieces on specific squares.
+ *
+ * Related:
+ * - ../pieces/Piece.ts
+ * - ./Position.ts
+ * - ../utils/isWithinBoard.ts
+ */
 import type { Piece } from "../pieces/Piece.js";
-import { isWithinBoard } from "./isWithinBoard.js";
+import type { Position } from "./Position.js";
+import { isWithinBoard } from "../utils/isWithinBoard.js";
 
 export class Board {
   private grid: (Piece | null)[][] = [];
