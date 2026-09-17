@@ -1,7 +1,18 @@
+/**
+ * Purpose:
+ * Generates all pseudo-legal moves for a given piece.
+ * Calculates sliding, stepping, and pawn movement patterns.
+ *
+ * Related:
+ * - ../pieces/Piece.ts
+ * - ./Move.ts
+ * - ../board/Board.ts
+ * - ../utils/isWithinBoard.ts
+ */
 import type { Piece } from "../pieces/Piece.js";
-import type { Move } from "../types/Move.js";
-import type { Board } from "./Board.js";
-import { isWithinBoard } from "./isWithinBoard.js";
+import type { Move } from "./Move.js";
+import type { Board } from "../board/Board.js";
+import { isWithinBoard } from "../utils/isWithinBoard.js";
 
 export class MoveGenerator {
     constructor(private board: Board) { }
