@@ -1,17 +1,24 @@
+/**
+ * Purpose:
+ * Rook piece implementation.
+ * Maps vertical/horizontal logic into a sliding pattern.
+ *
+ * Related:
+ * - Piece.ts
+ */
 import { Piece } from "./Piece.js";
-import type { Position } from "../board/Position.js";
-import type { Vector2D } from "../types/Vector2D.js";
-import { generateSlidingMoves } from "./utils.js";
+import type { MovementPattern } from "../types/MovementPattern.js";
 
 export class Rook extends Piece {
-  getMoveCandidates(): Position[] {
-    const directions: Vector2D[] = [
-      [0, -1],
-      [0, 1],
-      [1, 0],
-      [-1, 0],
-    ];
-
-    return generateSlidingMoves(this.position, directions);
+  getMovementPattern(): MovementPattern {
+    return {
+      type: "sliding",
+      directions: [
+        [0, 1],
+        [0, -1],
+        [1, 0],
+        [-1, 0],
+      ],
+    };
   }
 }

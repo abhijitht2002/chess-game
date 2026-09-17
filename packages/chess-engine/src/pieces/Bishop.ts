@@ -1,17 +1,24 @@
+/**
+ * Purpose:
+ * Bishop piece implementation.
+ * Maps diagonal logic into a sliding pattern.
+ *
+ * Related:
+ * - Piece.ts
+ */
 import { Piece } from "./Piece.js";
-import type { Position } from "../board/Position.js";
-import type { Vector2D } from "../types/Vector2D.js";
-import { generateSlidingMoves } from "./utils.js";
+import type { MovementPattern } from "../types/MovementPattern.js";
 
 export class Bishop extends Piece {
-  getMoveCandidates(): Position[] {
-    const directions: Vector2D[] = [
-      [-1, -1],
-      [-1, 1],
-      [1, -1],
-      [1, 1],
-    ];
-
-    return generateSlidingMoves(this.position, directions);
+  getMovementPattern(): MovementPattern {
+    return {
+      type: "sliding",
+      directions: [
+        [1, 1],
+        [1, -1],
+        [-1, 1],
+        [-1, -1],
+      ],
+    };
   }
 }

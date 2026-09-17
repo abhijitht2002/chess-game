@@ -1,17 +1,22 @@
 import { describe, expect, test } from "vitest";
-import { Knight } from "../../src/pieces/Knight";
+import { Knight } from "../../src/pieces/Knight.js";
 
 describe("Knight", () => {
-    test("generates move candidates from d4", () => {
-        const knight = new Knight("white", {
-            file: 3,
-            rank: 4,
+    test("returns the correct movement pattern", () => {
+        const piece = new Knight("white", { file: 0, rank: 0 });
+        const pattern = piece.getMovementPattern();
+        expect(pattern).toEqual({
+            type: "stepping",
+            offsets: [
+                [-2, -1],
+                [-2, 1],
+                [-1, -2],
+                [-1, 2],
+                [1, -2],
+                [1, 2],
+                [2, -1],
+                [2, 1],
+            ],
         });
-
-        const moves = knight.getMoveCandidates();
-
-        console.log(moves);
-
-        expect(moves).toHaveLength(8);
     });
 });

@@ -1,17 +1,18 @@
 import { describe, expect, test } from "vitest";
-import { Rook } from "../../src/pieces/Rook";
+import { Rook } from "../../src/pieces/Rook.js";
 
 describe("Rook", () => {
-  test("generates move candidates from d4", () => {
-    const rook = new Rook("white", {
-      file: 3,
-      rank: 4,
+  test("returns the correct movement pattern", () => {
+    const piece = new Rook("white", { file: 0, rank: 0 });
+    const pattern = piece.getMovementPattern();
+    expect(pattern).toEqual({
+      type: "sliding",
+      directions: [
+        [0, 1],
+        [0, -1],
+        [1, 0],
+        [-1, 0],
+      ],
     });
-
-    const moves = rook.getMoveCandidates();
-
-    console.log(moves);
-
-    expect(moves).toHaveLength(14);
   });
 });
